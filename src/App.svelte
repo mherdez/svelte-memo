@@ -1,36 +1,35 @@
 <script>
+  import confetti from 'canvas-confetti';
   import { suffleCartas } from './helpers/suffleCartas';
 
   const cards = suffleCartas();
 
   let cardSelect = [];
   let cartaEncontrada = [];
-  let gameOver = false
+  let gameOver = false;
 
   // ---------------------- FUNCIONES ----------------------
 
   const jugarCarta = (index) => {
-
     if (cardSelect.length > 1 || cartaEncontrada.includes(index)) return;
 
     cardSelect = [...cardSelect, index];
-    console.log(cardSelect)
     if (cardSelect.length == 2) {
       cards[cardSelect[0]] === cards[cardSelect[1]]
         ? (cartaEncontrada = [...cartaEncontrada, cards[index]])
         : null;
-        const time = setTimeout( () => cardSelect = [], 500)
-        console.log(cartaEncontrada);
+      setTimeout(() => (cardSelect = []), 500);
     }
-    if ( cartaEncontrada.length === cards.length / 2) {
-      gameOver =  true
+    if (cartaEncontrada.length === cards.length / 2) {
+      gameOver = true;
+      confetti();
     }
   };
   // ---------------------- FUNCIONES ----------------------
 </script>
 
 <main class="container">
-  <h1>{gameOver ? 'Congratulation!!!' : 'Memo'}</h1>
+  <h1>{gameOver ? 'Congratulation' : 'Memo'}</h1>
   <div class="memo">
     {#each cards as card, index}
       <div
@@ -38,7 +37,9 @@
         on:click={() => jugarCarta(index)}
         on:keydown={() => jugarCarta(card)}
       >
-        { cardSelect.includes(index) || cartaEncontrada.includes(card) ? card : '?'}
+        {cardSelect.includes(index) || cartaEncontrada.includes(card)
+          ? card
+          : '?'}
       </div>
     {/each}
   </div>
@@ -65,9 +66,13 @@
     border: 4px solid rgb(255, 238, 0);
     border-radius: 25%;
     font-size: 6rem;
-    line-height: 10rem;
     padding: 10px;
     text-align: center;
     cursor: pointer;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
   }
 </style>
