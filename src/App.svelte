@@ -11,7 +11,12 @@
   // ---------------------- FUNCIONES ----------------------
 
   const jugarCarta = (index) => {
-    if (cardSelect.length > 1 || cartaEncontrada.includes(index)) return;
+    if (
+      cardSelect.length > 1 ||
+      cartaEncontrada.includes(cards[index]) ||
+      cardSelect.includes(index)
+    )
+      return;
 
     cardSelect = [...cardSelect, index];
     if (cardSelect.length == 2) {
@@ -47,32 +52,65 @@
 
 <style>
   .container {
+    font-size: 5px;
+  }
+
+  .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    padding: 40px;
+    padding: 5em;
     place-items: center;
-    width: 100vw;
+  }
+  h1 {
+    font-size: 6em;
   }
   .memo {
+    margin-top: 4em;
     display: grid;
-    gap: 50px;
-    grid-template-columns: repeat(4, 1fr);
-    margin-top: 50px;
-    width: 80%;
+    grid-template-columns: repeat(3, minmax(30%, 1fr));
+    gap: 3em;
   }
   .carta {
+    align-items: center;
     background-color: rgb(23, 57, 109);
-    border: 4px solid rgb(255, 238, 0);
     border-radius: 25%;
-    font-size: 6rem;
-    padding: 10px;
-    text-align: center;
+    border: 0.1em solid rgb(255, 238, 0);
     cursor: pointer;
-    aspect-ratio: 1/1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    font-size: 7em;
+    inline-size: 2.5em;
+    text-align: center;
+    aspect-ratio: 1/1;
+  }
+  @media (min-width: 768px) {
+    .container {
+      font-size: 10px;
+    }
 
+  }
+  @media (min-width: 992px) {
+    .memo {
+      margin-top: 7em;
+      flex: 4;
+      max-width: 125em;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+      gap: 5%;
+    }
+    .carta {
+      align-items: center;
+      background-color: rgb(23, 57, 109);
+      border-radius: 25%;
+      border: 0.1em solid rgb(255, 238, 0);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      font-size: 10em;
+      padding: 0.5em;
+      text-align: center;
+      aspect-ratio: 1/1;
+    }
   }
 </style>
