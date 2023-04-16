@@ -2,7 +2,7 @@
   import confetti from 'canvas-confetti';
   import { suffleCartas } from './helpers/suffleCartas';
 
-  const cards = suffleCartas();
+  let cards = suffleCartas();
 
   let cardSelect = [];
   let cartaEncontrada = [];
@@ -30,11 +30,18 @@
       confetti();
     }
   };
+
+  const newGame = () => {
+    cardSelect = [];
+    cartaEncontrada = [];
+    gameOver = false;
+    cards = suffleCartas();
+  };
   // ---------------------- FUNCIONES ----------------------
 </script>
 
 <main class="container">
-  <h1>{gameOver ? 'Congratulation' : 'Memo'}</h1>
+  <h1>Memo</h1>
   <div class="memo">
     {#each cards as card, index}
       <div
@@ -48,8 +55,9 @@
       </div>
     {/each}
   </div>
-  <div class="newGame">
-    <p>Jugar de nuevo</p>
+  <div class={gameOver ? 'newGame' : 'hidden'}>
+    <h1>Congratulation 🎉</h1>
+    <p on:click={newGame} on:keydown={newGame}>Jugar de nuevo</p>
   </div>
 </main>
 
@@ -59,6 +67,9 @@
     position: relative;
   }
 
+  .hidden {
+    display: none;
+  }
   .container {
     display: flex;
     flex-direction: column;
@@ -100,21 +111,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    flex-direction: column;
+    gap: 8em;
   }
   .newGame p {
+    cursor: pointer;
     background-color: rgb(23, 57, 109);
-    border: 0.1em solid rgb(255, 238, 0);
+    border: 0.2em solid rgb(255, 238, 0);
     font-size: 3em;
     padding: 1em 1.4em;
     border-radius: 2em;
-
   }
   @media (min-width: 768px) {
     .container {
       font-size: 10px;
     }
-
   }
   @media (min-width: 992px) {
     .memo {
