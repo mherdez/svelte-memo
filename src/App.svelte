@@ -65,7 +65,7 @@
   </div>
   <div class={gameOver ? 'newGame' : 'hidden'}>
     <h1>Congratulation 🎉</h1>
-    <p on:click={() => newGame(tema)} on:keydown={() => newGame(tema)}>Jugar de nuevo</p>
+    <p on:click={() => newGame(tema)} on:keydown={() => newGame(tema)}>New game</p>
   </div>
 </main>
 
@@ -81,7 +81,6 @@
   .container {
     display: flex;
     flex-direction: column;
-    padding: 5em;
     place-items: center;
     height: 100vh;
   }
@@ -90,8 +89,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 4em;
-    margin: .5em;
+    font-size: 5em;
+    margin: .2em;
   }
   .tema span {
     cursor: pointer;
@@ -115,10 +114,10 @@
     padding: .5em;
   }
   h1 {
-    font-size: 5em;
+    font-size: 6em;
   }
   .memo {
-    margin-top: 4em;
+    margin-top: 2em;
     display: grid;
     grid-template-columns: repeat(3, minmax(30%, 1fr));
     gap: 3em;
@@ -131,8 +130,8 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    font-size: 7em;
-    inline-size: 2.5em;
+    font-size: 11em;
+    inline-size: 1.6em;
     text-align: center;
     aspect-ratio: 1/1;
   }
@@ -180,12 +179,12 @@
       align-items: center;
       background-color: rgb(23, 57, 109);
       border-radius: 25%;
-      border: 0.1em solid rgb(255, 238, 0);
+      border: 0.08em solid rgb(255, 238, 0);
       cursor: pointer;
       display: flex;
       justify-content: center;
-      font-size: 10em;
-      padding: 0.5em;
+      font-size: 12em;
+      inline-size: 2em;
       text-align: center;
       aspect-ratio: 1/1;
     }
