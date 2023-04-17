@@ -1,4 +1,8 @@
 // const cartasIni = ['😴', '😬', '🫠', '😵', '🥴', '🤗']
-const cartasIni = ['😉', '😬', '😍', '🙃', '😂', '🤗']
+const carasIni = ['😉', '😬', '😍', '🙃', '😂', '🤗']
+const frutasIni = ['🍎', '🍐', '🍊', '🍓', '🍌', '🍇']
+const animalesIni = ['🐶', '🐱', '🐹', '🦁', '🐷', '🐯']
 
-export const suffleCartas = () => [...cartasIni, ...cartasIni].sort(() => Math.random() - 0.5)
+const cartasIni = [[...carasIni], [...frutasIni], [...animalesIni]]
+
+export const suffleCartas = (opc) => [...cartasIni[opc], ...cartasIni[opc]].sort(() => Math.random() - 0.5)

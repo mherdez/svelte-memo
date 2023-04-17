@@ -2,7 +2,8 @@
   import confetti from 'canvas-confetti';
   import { suffleCartas } from './helpers/suffleCartas';
 
-  let cards = suffleCartas();
+  let tema = 0
+  let cards = suffleCartas(tema);
 
   let cardSelect = [];
   let cartaEncontrada = [];
@@ -31,17 +32,24 @@
     }
   };
 
-  const newGame = () => {
+  const newGame = (opc) => {
     cardSelect = [];
     cartaEncontrada = [];
     gameOver = false;
-    cards = suffleCartas();
+    cards = suffleCartas(opc);
+    tema = opc
   };
+
   // ---------------------- FUNCIONES ----------------------
 </script>
 
 <main class="container">
+  <div class="tema">
   <h1>Memo</h1>
+    <span class={tema === 0 ? "is-active" : ''} on:click={() => newGame(0)} on:keydown={newGame}>😊</span>
+    <span class={tema === 1 ? "is-active" : ''} on:click={() => newGame(1)} on:keydown={newGame}>🍎</span>
+    <span class={tema === 2 ? "is-active" : ''} on:click={() => newGame(2)} on:keydown={newGame}>🦁</span>
+  </div>
   <div class="memo">
     {#each cards as card, index}
       <div
@@ -57,7 +65,7 @@
   </div>
   <div class={gameOver ? 'newGame' : 'hidden'}>
     <h1>Congratulation 🎉</h1>
-    <p on:click={newGame} on:keydown={newGame}>Jugar de nuevo</p>
+    <p on:click={() => newGame(tema)} on:keydown={() => newGame(tema)}>Jugar de nuevo</p>
   </div>
 </main>
 
@@ -77,8 +85,44 @@
     place-items: center;
     height: 100vh;
   }
+
+  .tema {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 3em;
+    margin-top: 1em;
+  }
+  .tema span {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(100%);
+  }
+  .tema span:hover{
+    background-color: black;
+    border: 0.1em solid white;
+  }
+  .is-active {
+    filter: grayscale(0%) !important;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+    border: 0.1em solid yellow;
+  }
   h1 {
-    font-size: 6em;
+    font-size: 2sem;
+    margin-right: .5em;
   }
   .memo {
     margin-top: 4em;
