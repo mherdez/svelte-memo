@@ -90,7 +90,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 3em;
+    font-size: 4em;
+    margin: .5em;
   }
   .tema span {
     cursor: pointer;
