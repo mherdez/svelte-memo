@@ -121,7 +121,7 @@
     border: 0.1em solid yellow;
   }
   h1 {
-    font-size: 2sem;
+    font-size: 2em;
     margin-right: .5em;
   }
   .memo {
@@ -157,6 +157,9 @@
     align-items: center;
     flex-direction: column;
     gap: 8em;
+  }
+  .newGame h1 {
+    font-size: 5em;
   }
   .newGame p {
     cursor: pointer;
