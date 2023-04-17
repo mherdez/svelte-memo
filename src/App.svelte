@@ -110,7 +110,7 @@
   }
   .is-active {
     filter: grayscale(0%) !important;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     width: 2em;
     height: 2em;
     aspect-ratio: 1/1;
@@ -118,7 +118,7 @@
     justify-content: center;
     align-items: center;
     padding: .5em;
-    border: 0.1em solid yellow;
+    /* border: 0.1em solid yellow; */
   }
   h1 {
     font-size: 2em;
