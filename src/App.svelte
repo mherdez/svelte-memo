@@ -2,6 +2,7 @@
   import confetti from 'canvas-confetti';
   import { suffleCartas } from './helpers/suffleCartas';
 
+  const iconoTema = ['😊', '🍎', '🦁']
   let tema = 0
   let cards = suffleCartas(tema);
 
@@ -46,16 +47,16 @@
 <main class="container">
   <h1>Memo</h1>
   <div class="tema">
-    <span class={tema === 0 ? "is-active" : ''} on:click={() => newGame(0)} on:keydown={newGame}>😊</span>
-    <span class={tema === 1 ? "is-active" : ''} on:click={() => newGame(1)} on:keydown={newGame}>🍎</span>
-    <span class={tema === 2 ? "is-active" : ''} on:click={() => newGame(2)} on:keydown={newGame}>🦁</span>
+    {#each iconoTema as item, index}
+       <span class={tema === index ? 'is-active' : ''} on:click={() => newGame(index)} on:keydown={() => newGame(index)}>{item}</span>
+    {/each}
   </div>
   <div class="memo">
     {#each cards as card, index}
       <div
         class="carta"
         on:click={() => jugarCarta(index)}
-        on:keydown={() => jugarCarta(card)}
+        on:keydown={() => jugarCarta(index)}
       >
         {cardSelect.includes(index) || cartaEncontrada.includes(card)
           ? card
@@ -92,7 +93,7 @@
     font-size: 5em;
     margin: .2em;
   }
-  .tema span {
+  span {
     cursor: pointer;
     border-radius: 50%;
     width: 2em;
