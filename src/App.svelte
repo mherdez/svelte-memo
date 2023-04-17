@@ -44,8 +44,8 @@
 </script>
 
 <main class="container">
-  <div class="tema">
   <h1>Memo</h1>
+  <div class="tema">
     <span class={tema === 0 ? "is-active" : ''} on:click={() => newGame(0)} on:keydown={newGame}>😊</span>
     <span class={tema === 1 ? "is-active" : ''} on:click={() => newGame(1)} on:keydown={newGame}>🍎</span>
     <span class={tema === 2 ? "is-active" : ''} on:click={() => newGame(2)} on:keydown={newGame}>🦁</span>
@@ -91,7 +91,6 @@
     justify-content: space-around;
     align-items: center;
     font-size: 3em;
-    margin-top: 1em;
   }
   .tema span {
     cursor: pointer;
@@ -104,13 +103,8 @@
     align-items: center;
     filter: grayscale(100%);
   }
-  .tema span:hover{
-    background-color: black;
-    border: 0.1em solid white;
-  }
   .is-active {
     filter: grayscale(0%) !important;
-    /* border-radius: 50%; */
     width: 2em;
     height: 2em;
     aspect-ratio: 1/1;
@@ -118,11 +112,9 @@
     justify-content: center;
     align-items: center;
     padding: .5em;
-    /* border: 0.1em solid yellow; */
   }
   h1 {
-    font-size: 2em;
-    margin-right: .5em;
+    font-size: 5em;
   }
   .memo {
     margin-top: 4em;
