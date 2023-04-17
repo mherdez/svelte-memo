@@ -130,8 +130,8 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    font-size: 11em;
-    inline-size: 1.6em;
+    font-size: 10em;
+    inline-size: 2em;
     text-align: center;
     aspect-ratio: 1/1;
   }
